@@ -19,7 +19,7 @@ public class ProductController {
     private ProductService productService;
     @GetMapping
     @RolesAllowed({"ROLE_EDITOR","ROLE_CUSTOMER"})
-    public List<Product> products(){
+    public List<Product> getProducts(){
         return productService.getProducts();
     }
     @GetMapping("/{id}")
@@ -29,21 +29,21 @@ public class ProductController {
     }
     @PostMapping
     @RolesAllowed("ROLE_EDITOR")
-    public ResponseEntity<Product> product(@RequestBody @Valid Product product){
+    public ResponseEntity<Product> saveProduct(@RequestBody @Valid Product product){
         Product savedProduct = productService.saveProduct(product);
         URI productURI = URI.create("/product/"+savedProduct.getId());
         return ResponseEntity.created(productURI).body(savedProduct);
     }
     @PutMapping
     @RolesAllowed("ROLE_EDITOR")
-    public ResponseEntity<Product> update(@RequestBody @Valid Product product){
+    public ResponseEntity<Product> updateProduct(@RequestBody @Valid Product product){
         Product updatedProduct = productService.updateProduct(product);
         URI productURI = URI.create("/updateProduct/"+updatedProduct.getId());
         return ResponseEntity.created(productURI).body(updatedProduct);
     }
     @DeleteMapping("/{id}")
     @RolesAllowed("ROLE_EDITOR")
-    public String delete(@PathVariable @Valid Integer id){
+    public String deleteProduct(@PathVariable @Valid Integer id){
         return productService.deleteProductById(id);
     }
 }
