@@ -36,4 +36,9 @@ public class ProductController {
         URI productURI = URI.create("/updateProduct/"+updatedProduct.getId());
         return ResponseEntity.created(productURI).body(updatedProduct);
     }
+    @DeleteMapping("/{id}")
+    @RolesAllowed("ROLE_EDITOR")
+    public String delete(@PathVariable @Valid Integer id){
+        return productService.deleteProductById(id);
+    }
 }
