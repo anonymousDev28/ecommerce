@@ -29,4 +29,11 @@ public class ProductController {
         URI productURI = URI.create("/product/"+savedProduct.getId());
         return ResponseEntity.created(productURI).body(savedProduct);
     }
+    @PutMapping
+    @RolesAllowed("ROLE_EDITOR")
+    public ResponseEntity<Product> update(@RequestBody @Valid Product product){
+        Product updatedProduct = productService.updateProduct(product);
+        URI productURI = URI.create("/update/"+updatedProduct.getId());
+        return ResponseEntity.created(productURI).body(updatedProduct);
+    }
 }
