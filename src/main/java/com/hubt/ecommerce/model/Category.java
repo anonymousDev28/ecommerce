@@ -1,8 +1,6 @@
 package com.hubt.ecommerce.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -25,8 +23,6 @@ public class Category {
     private String categoryName;
 
     @OneToMany( mappedBy = "category", cascade = CascadeType.ALL)
-//    @JsonManagedReference
-//    @JsonIgnoreProperties("products")
     @JsonIgnore
     private Set<Product> products;
 
