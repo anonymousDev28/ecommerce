@@ -60,7 +60,7 @@ public class JWTTokenFilter extends OncePerRequestFilter {
         User userDetails = new User();
         Claims claims = tokenUtil.parseClaims(token);
         String claimRoles = (String) claims.get("roles");
-        System.out.println("claimRole: "+claimRoles);
+//        System.out.println("claimRole: "+claimRoles);
         claimRoles = claimRoles.replace("[","").replace("]","");
         String[] roleNames = claimRoles.split(",");
         for (String name: roleNames) {
