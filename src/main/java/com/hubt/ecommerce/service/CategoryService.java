@@ -2,12 +2,14 @@ package com.hubt.ecommerce.service;
 
 import com.hubt.ecommerce.model.Category;
 import com.hubt.ecommerce.repository.CategoryRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 public class CategoryService {
+    @Autowired
     private CategoryRepository categoryRepository;
     public Category getCategoryById(Integer id){
         return categoryRepository.findById(id).orElse(null);

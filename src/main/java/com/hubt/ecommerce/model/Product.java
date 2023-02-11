@@ -1,5 +1,7 @@
 package com.hubt.ecommerce.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -21,6 +23,8 @@ public class Product {
     private String name;
     protected Float price;
     @ManyToOne
-    @JoinColumn(name = "category_id",nullable = false)
+    @JoinColumn(name = "category_id")
+//    @JsonBackReference
+//    @JsonIgnoreProperties("category")
     private Category category;
 }
