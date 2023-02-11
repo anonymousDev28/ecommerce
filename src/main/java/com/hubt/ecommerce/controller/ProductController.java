@@ -22,6 +22,11 @@ public class ProductController {
     public List<Product> products(){
         return productService.getProducts();
     }
+    @GetMapping("/{id}")
+    @RolesAllowed({"ROLE_EDITOR","ROLE_CUSTOMER"})
+    public Product getProductByID(@PathVariable Integer id){
+        return productService.getProductById(id);
+    }
     @PostMapping
     @RolesAllowed("ROLE_EDITOR")
     public ResponseEntity<Product> product(@RequestBody @Valid Product product){
