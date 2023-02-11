@@ -26,11 +26,21 @@ public class CategoryController {
     public List<Category> getCategories(){
         return categoryService.getCategories();
     }
+    @GetMapping("/{id}")
+    @RolesAllowed({"ROLE_EDITOR","ROLE_CUSTOMER"})
+    public Category getCategoryById(@PathVariable Integer id){
+        return categoryService.getCategoryById(id);
+    }
     @PostMapping
     @RolesAllowed("ROLE_EDITOR")
     public ResponseEntity<Category> saveCategory(@RequestBody @Valid Category category){
         Category savedCategory = categoryService.saveCategory(category);
         URI categoryURI = URI.create("/category/"+savedCategory.getId());
         return ResponseEntity.created(categoryURI).body(savedCategory);
+    }
+    @DeleteMapping("/{id}")
+    @RolesAllowed("ROLE_EDITOR")
+    public String deleteCategoryById(@PathVariable Integer id){
+        return categoryService.deleteCategory(id);
     }
 }
