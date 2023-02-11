@@ -18,8 +18,6 @@ import java.util.List;
 public class CategoryController {
     @Autowired
     private CategoryService categoryService;
-    @Autowired
-    private CategoryRepository categoryRepository;
 
     @GetMapping
     @RolesAllowed({"ROLE_EDITOR","ROLE_CUSTOMER"})
@@ -30,6 +28,13 @@ public class CategoryController {
     @RolesAllowed({"ROLE_EDITOR","ROLE_CUSTOMER"})
     public Category getCategoryById(@PathVariable Integer id){
         return categoryService.getCategoryById(id);
+    }
+    @PutMapping
+    @RolesAllowed("ROLE_EDITOR")
+    public ResponseEntity<Category> updateCategory(@RequestBody Category category){
+        Category updatedCategory = categoryService.updateCategory(category);
+        URI categoryURI = URI.create("/category/"+updatedCategory.getId());
+        return ResponseEntity.created(categoryURI).body(updatedCategory);
     }
     @PostMapping
     @RolesAllowed("ROLE_EDITOR")
