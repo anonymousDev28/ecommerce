@@ -33,7 +33,7 @@ public class ProductController {
     @RolesAllowed("ROLE_EDITOR")
     public ResponseEntity<Product> update(@RequestBody @Valid Product product){
         Product updatedProduct = productService.updateProduct(product);
-        URI productURI = URI.create("/update/"+updatedProduct.getId());
+        URI productURI = URI.create("/updateProduct/"+updatedProduct.getId());
         return ResponseEntity.created(productURI).body(updatedProduct);
     }
 }
