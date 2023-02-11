@@ -20,4 +20,7 @@ public class Product {
     @Length(min = 5)
     private String name;
     protected Float price;
+    @ManyToOne
+    @JoinColumn(name = "category_id",nullable = false)
+    private Category category;
 }
