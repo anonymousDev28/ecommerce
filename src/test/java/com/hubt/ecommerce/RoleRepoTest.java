@@ -1,6 +1,6 @@
 package com.hubt.ecommerce;
 
-import com.hubt.ecommerce.model.Role;
+import com.hubt.ecommerce.domain.model.Role;
 import com.hubt.ecommerce.repository.RoleRepository;
 import com.hubt.ecommerce.repository.UserRepository;
 import io.jsonwebtoken.lang.Assert;

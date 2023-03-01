@@ -1,4 +1,4 @@
-package com.hubt.ecommerce.model;
+package com.hubt.ecommerce.domain.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;

@@ -1,6 +1,6 @@
 package com.hubt.ecommerce.jwt;
 
-import com.hubt.ecommerce.model.User;
+import com.hubt.ecommerce.domain.model.User;
 import io.jsonwebtoken.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

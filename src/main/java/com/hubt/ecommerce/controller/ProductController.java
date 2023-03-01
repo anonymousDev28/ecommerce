@@ -1,9 +1,8 @@
 package com.hubt.ecommerce.controller;
 
-import com.hubt.ecommerce.model.Product;
-import com.hubt.ecommerce.service.ProductService;
+import com.hubt.ecommerce.domain.model.Product;
+import com.hubt.ecommerce.service.ProductServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Role;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,34 +15,34 @@ import java.util.List;
 @RequestMapping("/products")
 public class ProductController {
     @Autowired
-    private ProductService productService;
+    private ProductServiceImpl productServiceImpl;
     @GetMapping
     @RolesAllowed({"ROLE_EDITOR","ROLE_CUSTOMER"})
     public List<Product> getProducts(){
-        return productService.getProducts();
+        return productServiceImpl.getProducts();
     }
     @GetMapping("/{id}")
     @RolesAllowed({"ROLE_EDITOR","ROLE_CUSTOMER"})
     public Product getProductByID(@PathVariable Integer id){
-        return productService.getProductById(id);
+        return productServiceImpl.getProductById(id);
     }
     @PostMapping
     @RolesAllowed("ROLE_EDITOR")
     public ResponseEntity<Product> saveProduct(@RequestBody @Valid Product product){
-        Product savedProduct = productService.saveProduct(product);
+        Product savedProduct = productServiceImpl.saveProduct(product);
         URI productURI = URI.create("/product/"+savedProduct.getId());
         return ResponseEntity.created(productURI).body(savedProduct);
     }
     @PutMapping
     @RolesAllowed("ROLE_EDITOR")
     public ResponseEntity<Product> updateProduct(@RequestBody @Valid Product product){
-        Product updatedProduct = productService.updateProduct(product);
+        Product updatedProduct = productServiceImpl.updateProduct(product);
         URI productURI = URI.create("/updateProduct/"+updatedProduct.getId());
         return ResponseEntity.created(productURI).body(updatedProduct);
     }
     @DeleteMapping("/{id}")
     @RolesAllowed("ROLE_EDITOR")
     public String deleteProduct(@PathVariable @Valid Integer id){
-        return productService.deleteProductById(id);
+        return productServiceImpl.deleteProductById(id);
     }
 }

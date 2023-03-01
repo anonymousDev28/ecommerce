@@ -1,6 +1,6 @@
 package com.hubt.ecommerce.repository;
 
-import com.hubt.ecommerce.model.Product;
+import com.hubt.ecommerce.domain.model.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

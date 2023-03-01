@@ -1,13 +1,12 @@
 package com.hubt.ecommerce;
 
-import com.hubt.ecommerce.model.Role;
-import com.hubt.ecommerce.model.User;
+import com.hubt.ecommerce.domain.model.Role;
+import com.hubt.ecommerce.domain.model.User;
 import com.hubt.ecommerce.repository.UserRepository;
 import io.jsonwebtoken.lang.Assert;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
-import org.springframework.boot.test.autoconfigure.orm.jpa.AutoConfigureDataJpa;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;

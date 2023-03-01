@@ -1,13 +1,12 @@
 package com.hubt.ecommerce.jwt;
 
-import com.hubt.ecommerce.model.Role;
-import com.hubt.ecommerce.model.User;
+import com.hubt.ecommerce.domain.model.Role;
+import com.hubt.ecommerce.domain.model.User;
 import io.jsonwebtoken.Claims;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.web.authentication.WebAuthenticationDetails;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.stereotype.Component;
 import org.springframework.util.ObjectUtils;
@@ -18,7 +17,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.net.http.HttpRequest;
 
 @Component
 public class JWTTokenFilter extends OncePerRequestFilter {
