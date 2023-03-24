@@ -1,5 +1,6 @@
 package com.hubt.ecommerce.controller;
 
+import com.hubt.ecommerce.domain.dto.CategoryDTO;
 import com.hubt.ecommerce.domain.model.Category;
 import com.hubt.ecommerce.service.CategoryServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,11 +17,11 @@ import java.util.List;
 public class CategoryController {
     @Autowired
     private CategoryServiceImpl categoryServiceImpl;
-
     @GetMapping
     @RolesAllowed({"ROLE_EDITOR","ROLE_CUSTOMER"})
-    public List<Category> getCategories(){
-        return categoryServiceImpl.getCategories();
+    public ResponseEntity<?> getCategories(){
+        List<CategoryDTO> categories = categoryServiceImpl.getCategories();
+        return (categories.isEmpty())?ResponseEntity.noContent().build():ResponseEntity.ok(categories);
     }
     @GetMapping("/{id}")
     @RolesAllowed({"ROLE_EDITOR","ROLE_CUSTOMER"})
